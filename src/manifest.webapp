@@ -1,6 +1,6 @@
 {
-  "name": "app name",
-  "short_name": "short name",
+  "name": "Application Title",
+  "short_name": "ApplicationTitle",
   "icons": [{
     "src": "images/icons/icon-48x48.png",
     "sizes": "48x48",

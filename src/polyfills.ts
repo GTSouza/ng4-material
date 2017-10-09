@@ -70,6 +70,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
 /**
  * Hammer helps you add support for touch gestures to your page, and remove the 300ms delay from clicks.
  **/
