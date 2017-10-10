@@ -1,23 +1,13 @@
 import { Component } from '@angular/core';
 
-import { Http } from '@angular/http';
-
-import { ListItem } from './list-item/list-item.component';
-
-import { OnInit } from '@angular/core';
-
-import { ViewEncapsulation } from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Application Title';
-
-  items: ListItem[];
-
+  
   navItems = [
 	{name: 'Autocomplete', route: '/autocomplete'},
 	{name: 'Button Toggle', route: '/button-toggle'},
@@ -57,12 +47,4 @@ export class AppComponent implements OnInit {
 	{name: 'Tooltip', route: '/tooltip'},
 	{name: 'Typography', route: '/typography'}
 	];
-
-	constructor(private http: Http) { }
-
-	ngOnInit() {
-    this.http.get('assets/data/items.json')
-      .map(response => response.json())
-      .subscribe(data => this.items = data);
-  }
 }

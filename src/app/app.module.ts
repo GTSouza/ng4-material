@@ -8,19 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VirtualScrollModule } from 'angular2-virtual-scroll';
 
 import { AppComponent } from './app.component';
+import { FeedListItemComponent } from './feed-list/feed-list-item.component';
 import { FeedListComponent } from './feed-list/feed-list.component';
 import { UserAvatarComponent } from './user-avatar/user-avatar.component';
-
-import { ListItemComponent } from './list-item/list-item.component';
-import { ListWithApiComponent } from './list-with-api/list-with-api.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FeedListComponent,
     UserAvatarComponent,
-    ListItemComponent,
-    ListWithApiComponent
+    FeedListItemComponent,
+    FeedListComponent
   ],
   imports: [
     BrowserModule,
