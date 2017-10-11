@@ -42,5 +42,5 @@ testem.log
 Thumbs.db
 
 # Sensitive Data
-firebase-messaging-sw.js
-data.service.ts
+src/firebase-messaging-sw.js
+src/app/_services/data.service.ts
