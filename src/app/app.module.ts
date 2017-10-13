@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
@@ -25,6 +26,9 @@ import { RegisterComponent } from './register/index';
 import { FeedListItemComponent } from './feed-list/feed-list-item.component';
 import { FeedListComponent } from './feed-list/feed-list.component';
 import { UserAvatarComponent } from './user-avatar/user-avatar.component';
+import { LandingComponent } from './landing/landing.component';
+
+import { FacebookModule } from 'ngx-facebook';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { UserAvatarComponent } from './user-avatar/user-avatar.component';
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ import { UserAvatarComponent } from './user-avatar/user-avatar.component';
     MaterialModule,
     BrowserAnimationsModule,
     VirtualScrollModule,
-    routing
+    routing,
+    FlexLayoutModule,
+    FacebookModule.forRoot()
   ],
   providers: [
     AuthGuard,

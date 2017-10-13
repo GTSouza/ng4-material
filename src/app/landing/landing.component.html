@@ -1,0 +1,24 @@
+<div class="container">
+	<div fxLayout="column" fxLayoutAlign="center center">
+		<div class="logotype">
+			<img src="assets/icons/icon-96x96.png" />
+		</div>
+		<div class="row">
+			Cadastre-se ou faça login para conectar-se ao #title#
+		</div>
+		<div>
+			<a (click)="login()">
+				Login
+			</a>
+		</div>
+		<div class="row">
+			ou
+		</div>
+		<div class="row">
+			<a [routerLink]="['/register']">Cadastre-se</a>
+		</div>
+		<div class="row">
+			Já possui cadastro? <a [routerLink]="['/login']" class="btn btn-link">Efetuar Login</a>
+		</div>
+	</div>
+</div>

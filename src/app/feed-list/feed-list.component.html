@@ -4,7 +4,6 @@
 	of <span class="badge">{{buffer?.length}}</span>
 	<span>({{scrollItems?.length}} nodes)</span>
 </div> -->
-
 <virtual-scroll [items]="buffer" (update)="scrollItems = $event" (end)="fetchMore($event)">
 	<app-feed-list-item *ngFor="let item of scrollItems" [item]="item"></app-feed-list-item>
 	<div *ngIf="loading" class="loader">Loading...</div>
