@@ -14,10 +14,10 @@ export class LandingComponent {
     console.log('Initializing Facebook');
 
     fb.init({
-      appId: '1927971220769787', //267045017074473
+      appId: '267045017074473', //
       cookie     : true,
       xfbml      : true,
-      version: 'v2.9' // v2.8
+      version: 'v2.8' // v2.8
     });
 
   }

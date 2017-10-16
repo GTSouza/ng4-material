@@ -1,29 +1,42 @@
-﻿<div class="signin-content">
-    <mat-card>
-        <mat-toolbar>
-            <h2>
-                Login
-            </h2>
-        </mat-toolbar>
-        <form #f="ngForm" (ngSubmit)="onSubmit()">
+﻿<div class="container">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-card>
+            <mat-toolbar>
+                <h2>
+                    Login
+                </h2>
+            </mat-toolbar>
+            <form [formGroup]="loginForm" novalidate (ngSubmit)="login(loginForm.value, loginForm.valid)">
 
-            <mat-form-field>
-                <input matInput placeholder="Enter your email" [formControl]="usernameControl" [(ngModel)]="model.username" required>
-                <mat-error *ngIf="usernameControl.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Enter your email" formControlName="email">
+                        <mat-error *ngIf="!loginForm.controls.email.valid">
+                            E-mail required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
 
-            <mat-form-field>
-                <input matInput placeholder="Enter your password" [formControl]="passwordControl" [(ngModel)]="model.password" required>
-                <mat-error *ngIf="passwordControl.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
+                <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Enter your password"  formControlName="password">
+                        <mat-error *ngIf="!loginForm.controls.password.valid">
+                            Password required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
 
-            <div>
-                <button mat-button color="primary" [disabled]="loading">Login</button>
-                <a mat-button [routerLink]="['/register']">Register</a>
-            </div>
+                <div>
+                    <button mat-button type="submit" color="primary" [disabled]="!loginForm.valid">Login</button>
+                    <a mat-button [routerLink]="['/register']">Register</a>
+                </div>
 
-            <mat-spinner *ngIf="loading"></mat-spinner>
+                <mat-spinner *ngIf="loading"></mat-spinner>
 
-        </form>
-    </mat-card>
+            </form>
+        </mat-card>
+    </div>
 </div>
+
+<p>Form value: {{ loginForm.value | json }}</p>
+<p>Form status: {{ loginForm.status | json }}</p>

@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { AlertService, AuthenticationService } from '../_services/index';
 
@@ -16,16 +16,20 @@ export class LoginComponent implements OnInit {
     loading = false;
     returnUrl: string;
 
-    usernameControl = new FormControl('', [Validators.required, Validators.email]);
-    passwordControl = new FormControl('', [Validators.required]);
+    loginForm: FormGroup;
+    submitted: boolean;
+    public events: any[] = [];
 
-    constructor(
+    constructor (private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
         private alertService: AlertService) { }
 
     ngOnInit() {
+
+        this.createForm();
+
         // reset login status
         this.authenticationService.logout();
 
@@ -33,9 +37,17 @@ export class LoginComponent implements OnInit {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     }
 
-    onSubmit() {
+    createForm() {
+
+        this.loginForm = this.formBuilder.group({
+            email: ['', [<any>Validators.required, <any>Validators.email]],
+            password: ['', [<any>Validators.required]]
+        });
+    }
+
+    login(model: any, isValid: boolean) {
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        this.authenticationService.login(this.model.email, this.model.password)
         .subscribe(
             data => {
                 this.router.navigate([this.returnUrl]);
@@ -44,11 +56,5 @@ export class LoginComponent implements OnInit {
                 this.alertService.error(error);
                 this.loading = false;
             });
-    }
-
-    getErrorMessage() {
-        return this.usernameControl.hasError('required') ? 'You must enter a value' :
-        this.usernameControl.hasError('email') ? 'Not a valid email' :
-        '';
     }
 }
